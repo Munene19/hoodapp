@@ -114,4 +114,34 @@ def add_business(request, id):
     print(current_neighborhood)
     current_user = request.user
     form = BusinessForm()   
+
+
+@login_required(login_url='/accounts/login')
+def business(request, id):
+    
+    try:
+        neighborhood = Neighborhood.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return redirect(index_html, current_user.id)
+    
+    businesses = Business.objects.filter(business_neighborhood_id=id)
+    posts = Post.objects.filter(location_id=id)
+    hoods = Neighborhood.objects.filter(id=id)
+    print(posts)
+    return render(request, 'business.html',{'businesses':businesses,'posts':posts,'hoods':hoods })
+
+
+@login_required(login_url='/accounts/login')
+def add_business(request, id):
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(user_id=request.user.id)
+    except ObjectDoesNotExist:
+        return redirect(update_profile, current_user.id)   
+    current_neighborhood = Neighborhood.objects.get(id = id)
+    print(current_neighborhood)
+    current_user = request.user
+    form = BusinessForm()   
+    
+
     
