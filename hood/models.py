@@ -45,3 +45,33 @@ class Neighborhood(models.Model):
         all_objects = Neighborhood.objects.all()
         for item in all_objects:
             return item
+
+class Business(models.Model):
+    business_name = models.CharField(max_length=100, unique= True)
+    business_user = models.ForeignKey(User,on_delete=models.CASCADE)
+    business_neighborhood = models.ForeignKey(Neighborhood, null=True)
+    business_email = models.EmailField(max_length=100, unique= True) 
+    
+    
+    def create_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+
+    
+    @classmethod              
+    def find_business_by_id(cls,id):
+        business_result = cls.objects.get(id=id)
+        return business_result
+
+    
+    @classmethod
+    def update_business(cls,current_value,new_value):
+        fetched_object = cls.objects.filter(business_name=current_value).update(business_name=new_value)
+        return fetched_object
+
+
+    def search_by_business(cls,search_term):
+        search_result = cls.objects.filter(business_name__icontains=search_term)
+        return search_result   
