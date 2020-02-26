@@ -75,3 +75,40 @@ class Business(models.Model):
     def search_by_business(cls,search_term):
         search_result = cls.objects.filter(business_name__icontains=search_term)
         return search_result   
+
+
+class Profile(models.Model):
+    profile_pic = models.ImageField(upload_to = 'images/',default='images/christine.jpg')
+    bio = models.TextField()
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood,null=True, related_name='population')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+    @property
+    def image(self):
+        if self.profile_pic and hasattr(self.profile_pic, 'url'):
+            return self.profile_pic.url
+
+    @classmethod
+    def search_by_username(cls,search_term):
+        search_result = cls.objects.filter(user__username__icontains=search_term)
+        return search_result
+
+    def save_profile(self):
+        self.save()
+
+
+class Post(models.Model):
+    description =  models.CharField(max_length=70)
+    post_image = models.ImageField(upload_to='images/', null=True,blank=True)
+    categories = models.CharField(max_length=70)
+    time_created =  models.DateTimeField(auto_now=True, null =True)
+    location=models.ForeignKey(Neighborhood)
+    user = models.ForeignKey(User, null=True)
+    user_profile = models.ForeignKey(Profile)
+    
+    def __str__(self):
+        return self.description
+        
