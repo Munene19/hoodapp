@@ -14,11 +14,11 @@ class NeighborhoodForm(forms.ModelForm):
         model = Neighborhood
         fields = [ 'name','location','police','police_department_address','health','health_department_address']
 
-# class BusinessForm(forms.ModelForm):
+class BusinessForm(forms.ModelForm):
     
-#     class Meta:
-#         model = Business
-#         exclude = [ 'business_user','business_neighborhood']
+    class Meta:
+        model = Business
+        exclude = [ 'business_user','business_neighborhood']
 
 # class PostForm(forms.ModelForm):
     
