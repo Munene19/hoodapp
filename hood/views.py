@@ -183,10 +183,10 @@ def search_results(request):
         return render(request, 'search.html',{"message":message})
 
 
-@login_required(login_url='/accounts/login/')
-def leave(request): 
-    current_user = request.user
-    return redirect('home')
+# @login_required(login_url='/accounts/login/')
+# def leave(request): 
+#     current_user = request.user
+#     return redirect('home')
  
         
 # def signout(request):
