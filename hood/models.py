@@ -3,15 +3,15 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-# class Neighborhood(models.Model):
-#     name = models.CharField(max_length=100)
-#     location = models.CharField(max_length=100, null=True)
-#     posted_by =  models.CharField(max_length=100, null=True)
-#     count = models.CharField(max_length=100)
-#     police = models.CharField(max_length=100)
-#     police_department_address = models.CharField(max_length=100)
-#     health = models.CharField(max_length=100)
-#     health_department_address = models.CharField(max_length=100)
+class Neighborhood(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100, null=True)
+    posted_by =  models.CharField(max_length=100, null=True)
+    count = models.CharField(max_length=100)
+    police = models.CharField(max_length=100)
+    police_department_address = models.CharField(max_length=100)
+    health = models.CharField(max_length=100)
+    health_department_address = models.CharField(max_length=100)
 
 
     def __str__(self):
@@ -100,15 +100,15 @@ class Business(models.Model):
 #         self.save()
 
 
-# class Post(models.Model):
-#     description =  models.CharField(max_length=70)
-#     post_image = models.ImageField(upload_to='images/', null=True,blank=True)
-#     categories = models.CharField(max_length=70)
-#     time_created =  models.DateTimeField(auto_now=True, null =True)
-#     location=models.ForeignKey(Neighborhood)
-#     user = models.ForeignKey(User, null=True)
-#     user_profile = models.ForeignKey(Profile)
+class Post(models.Model):
+    description =  models.CharField(max_length=70)
+    post_image = models.ImageField(upload_to='images/', null=True,blank=True)
+    categories = models.CharField(max_length=70)
+    time_created =  models.DateTimeField(auto_now=True, null =True)
+    location=models.ForeignKey(Neighborhood)
+    user = models.ForeignKey(User, null=True)
+    user_profile = models.ForeignKey(Profile)
     
-#     def __str__(self):
-#         return self.description
+    def __str__(self):
+        return self.description
         
