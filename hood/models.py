@@ -77,27 +77,27 @@ class Business(models.Model):
         return search_result   
 
 
-class Profile(models.Model):
-    profile_pic = models.ImageField(upload_to = 'images/',default='images/christine.jpg')
-    bio = models.TextField()
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
-    neighborhood = models.ForeignKey(Neighborhood,null=True, related_name='population')
+# class Profile(models.Model):
+#     profile_pic = models.ImageField(upload_to = 'images/',default='images/christine.jpg')
+#     bio = models.TextField()
+#     user = models.OneToOneField(User,on_delete=models.CASCADE)
+#     neighborhood = models.ForeignKey(Neighborhood,null=True, related_name='population')
 
-    def __str__(self):
-        return f'{self.user.username} Profile'
+#     def __str__(self):
+#         return f'{self.user.username} Profile'
 
-    @property
-    def image(self):
-        if self.profile_pic and hasattr(self.profile_pic, 'url'):
-            return self.profile_pic.url
+#     @property
+#     def image(self):
+#         if self.profile_pic and hasattr(self.profile_pic, 'url'):
+#             return self.profile_pic.url
 
-    @classmethod
-    def search_by_username(cls,search_term):
-        search_result = cls.objects.filter(user__username__icontains=search_term)
-        return search_result
+#     @classmethod
+#     def search_by_username(cls,search_term):
+#         search_result = cls.objects.filter(user__username__icontains=search_term)
+#         return search_result
 
-    def save_profile(self):
-        self.save()
+#     def save_profile(self):
+#         self.save()
 
 
 # class Post(models.Model):
