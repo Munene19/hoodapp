@@ -27,10 +27,9 @@ Install all the dependencies from the requirements.txt file by running python3.6
 
 Create a database and edit the database configurations in settings.py to your own credentials.
 
-Make migrations
-
-  $ python manage.py makemigrations hood
-  $ python3.6 manage.py migrate 
+Make migrations:
+    $ python manage.py makemigrations hood
+    $ python3.6 manage.py migrate 
 ##### To run the application, in your terminal:
 
   $ python3.6 manage.py runserver
