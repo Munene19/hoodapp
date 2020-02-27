@@ -189,6 +189,6 @@ def leave(request):
     return redirect('home')
  
         
-def signout(request):
-    logout(request)
-    return redirect('login')
+# def signout(request):
+#     logout(request)
+#     return redirect('login')
