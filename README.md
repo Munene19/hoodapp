@@ -15,7 +15,7 @@ Create an account with us so that you can upload the information about your Neig
 In your terminal:
 
   $ git clone https://github.com/Munene19/hoodapp
-  $ cd neigbour
+
 #### Running the Application
 Install virtual environment using $ python3.6 -m venv --without-pip virtual
 
