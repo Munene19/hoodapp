@@ -8,11 +8,11 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['profile_pic', 'bio']
 
-# class NeighborhoodForm(forms.ModelForm):
+class NeighborhoodForm(forms.ModelForm):
     
-#     class Meta:
-#         model = Neighborhood
-#         fields = [ 'name','location','police','police_department_address','health','health_department_address']
+    class Meta:
+        model = Neighborhood
+        fields = [ 'name','location','police','police_department_address','health','health_department_address']
 
 # class BusinessForm(forms.ModelForm):
     
