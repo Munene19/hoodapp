@@ -135,35 +135,35 @@ def add_business(request, id):
 
 
 
-# @login_required(login_url='/accounts/login')
-# def post(request, id):
-#     current_user = request.user
-#     current_post = Post.objects.filter(id = id)
-#     current_neighborhood = Neighborhood.objects.get(id = id)
-#     try:
-#         profile = Profile.objects.get(user_id=request.user.id)
-#     except ObjectDoesNotExist:
-#         return redirect(update_profile, current_user.id)   
+@login_required(login_url='/accounts/login')
+def post(request, id):
+    current_user = request.user
+    current_post = Post.objects.filter(id = id)
+    current_neighborhood = Neighborhood.objects.get(id = id)
+    try:
+        profile = Profile.objects.get(user_id=request.user.id)
+    except ObjectDoesNotExist:
+        return redirect(update_profile, current_user.id)   
 
-#     current_user = request.user
-#     form = PostForm()   
+    current_user = request.user
+    form = PostForm()   
 
-#     if request.method == 'POST':
-#         form = PostForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             print(post)
-#             post.user = current_user
-#             post.location= Neighborhood.objects.get(id = id)
-#             post.user_profile=profile
-#             post.save()
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            print(post)
+            post.user = current_user
+            post.location= Neighborhood.objects.get(id = id)
+            post.user_profile=profile
+            post.save()
 
-#         return redirect('business', id)
+        return redirect('business', id)
 
-#     else:
-#         form = PostForm()                    
+    else:
+        form = PostForm()                    
         
-#     return render(request, 'post.html', {"current_neighborhood": current_neighborhood, "form": form})  
+    return render(request, 'post.html', {"current_neighborhood": current_neighborhood, "form": form})  
 
 
 
